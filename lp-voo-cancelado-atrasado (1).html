@@ -295,13 +295,6 @@
   }
   .form-success h4{color:var(--navy);font-size:17px;margin-bottom:6px;}
   .form-success p{font-size:13.5px;color:var(--slate-light);}
-  .json-preview{
-    margin-top:16px;background:var(--navy);color:#9FE6BE;border-radius:10px;padding:14px;
-    font-family:var(--font-mono);font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;
-    text-align:left;display:none;
-  }
-  .json-preview.is-visible{display:block;}
-  .json-preview__label{color:#8AA6D9;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;font-size:10.5px;}
 
   /* Footer */
   footer{background:var(--brand-blue-dark);color:#9FB1D6;padding:40px 0 26px;}
@@ -441,10 +434,6 @@
               <button type="submit" class="btn btn-primary btn-block">Quero verificar minha indenização</button>
               <p class="form-note">Ao enviar, você concorda em ser contatado pelo WhatsApp sobre o seu caso.</p>
             </form>
-            <div class="json-preview" id="json-preview">
-              <span class="json-preview__label">Payload gerado (pronto para o webhook)</span>
-              <span id="json-preview-content"></span>
-            </div>
           </div>
 
           <div class="form-success" id="form-success">
@@ -811,14 +800,6 @@
       // Log para conferência em desenvolvimento
       console.log('Lead capturado (Indenizei):', JSON.stringify(payload, null, 2));
 
-      // Preview visual do JSON (só existe no formulário do hero)
-      if(opts.previewId){
-        var preview = document.getElementById(opts.previewId);
-        var previewContent = document.getElementById(opts.previewContentId);
-        previewContent.textContent = JSON.stringify(payload, null, 2);
-        preview.classList.add('is-visible');
-      }
-
       function showSuccess(){
         document.getElementById(opts.defaultContainerId).style.display = 'none';
         document.getElementById(opts.successContainerId).classList.add('is-visible');
@@ -866,8 +847,6 @@
     fieldTelId: 'field-telefone',
     defaultContainerId: 'form-default',
     successContainerId: 'form-success',
-    previewId: 'json-preview',
-    previewContentId: 'json-preview-content',
     canal: 'hero'
   });
 
