@@ -63,14 +63,18 @@ src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
     --font-mono:'IBM Plex Mono',monospace;
   }
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  *{margin:0;padding:0;box-sizing:border-box;min-width:0;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
   body{
     font-family:var(--font-body);
     color:var(--slate);
     background:var(--paper);
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    width:100%;
+    overflow-wrap:break-word;
+    word-break:break-word;
   }
   img,svg{display:block;max-width:100%;}
   a{color:inherit;text-decoration:none;}
@@ -128,7 +132,7 @@ src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
     border-bottom:1px solid rgba(255,255,255,.12);
   }
   .sticky-bar__inner{
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;
     padding:12px 24px;max-width:1120px;margin:0 auto;
   }
   .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);}
@@ -180,7 +184,7 @@ src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
   .hero h1 .hl{color:var(--brand-yellow);}
   .hero__sub{margin-top:16px;font-size:17px;color:rgba(255,255,255,.95);max-width:520px;}
   .hero__actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
-  .hero__trust{margin-top:22px;display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(255,255,255,.88);}
+  .hero__trust{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13.5px;color:rgba(255,255,255,.88);}
   .stars{color:var(--brand-yellow);font-size:15px;letter-spacing:1px;}
 
   /* Boarding pass mock */
@@ -188,10 +192,10 @@ src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
     background:var(--white);border-radius:18px;padding:22px;color:var(--navy);
     box-shadow:0 30px 60px rgba(3,15,40,.35);position:relative;
   }
-  .pass__row{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:12px;color:var(--slate-light);letter-spacing:.04em;}
+  .pass__row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;font-family:var(--font-mono);font-size:12px;color:var(--slate-light);letter-spacing:.04em;}
   .pass__route{display:flex;align-items:center;gap:10px;margin:14px 0 6px;font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--navy);}
   .pass__route .plane{color:var(--sky);font-size:18px;}
-  .pass__status-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;}
+  .pass__status-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;}
   .badge{font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.05em;padding:5px 10px;border-radius:6px;text-transform:uppercase;}
   .badge--red{background:var(--red-light);color:var(--red);}
   .badge--green{background:var(--green-light);color:var(--green);}
@@ -317,7 +321,7 @@ src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
   .field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
   .field input{
     width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:9px;
-    font-size:14.5px;font-family:var(--font-body);color:var(--navy);background:var(--paper);
+    font-size:16px;font-family:var(--font-body);color:var(--navy);background:var(--paper);
     transition:border-color .15s ease;
   }
   .field input:focus{outline:none;border-color:var(--sky);background:#fff;}
@@ -410,6 +414,27 @@ src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
   .wa-modal__close:hover{background:var(--line);}
   .wa-modal__icon{width:48px;height:48px;border-radius:50%;background:#E7F9EF;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
   .wa-modal h3{font-size:18px;color:var(--brand-blue-deep);margin-bottom:6px;}
+
+  /* Ajustes de responsividade para telas pequenas (celulares) */
+  @media(max-width:480px){
+    .eyebrow{
+      font-size:10.5px;padding:5px 10px;border-radius:10px;letter-spacing:.03em;
+      white-space:normal;text-align:center;line-height:1.4;
+    }
+    .sticky-bar__inner{padding:10px 16px;gap:10px;}
+    .sticky-bar .btn-small{padding:9px 13px;font-size:12.5px;white-space:nowrap;}
+    .brand-logo{height:20px;}
+    .hero{padding-left:0;padding-right:0;}
+    .form-card{padding:20px;}
+    .wa-modal-overlay{padding:12px;}
+    .wa-modal{padding:20px;max-width:100%;}
+    .btn{padding:13px 20px;font-size:14px;}
+    .case-card__title{font-size:14px;}
+  }
+  @media(max-width:360px){
+    .container{padding:0 16px;}
+    .hero__eyebrow{margin-bottom:14px;}
+  }
 </style>
 </head>
 <body>
@@ -970,13 +995,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var waFloatBtn = document.getElementById('whatsapp-float-btn');
   var waModalCloseBtn = document.getElementById('wa-modal-close');
 
+  var scrollLockY = 0;
   function openWaModal(){
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollLockY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
     waModalOverlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
   }
   function closeWaModal(){
     waModalOverlay.classList.remove('is-open');
-    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
   }
   waFloatBtn.addEventListener('click', openWaModal);
   waModalCloseBtn.addEventListener('click', closeWaModal);
