@@ -1,0 +1,94 @@
+{
+  "redirects": [
+    {
+      "source": "/indenizacao",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/indenizacao/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/atraso-de-voo-voo-atrasado-indenizacao-receba-uma-indenizacao",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/atraso-de-voo-voo-atrasado-indenizacao-receba-uma-indenizacao/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/reembolso-passagem-aerea",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/reembolso-passagem-aerea/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/voo-cancelado-cancelamento-de-voo-indenizacao-voo-cancelado",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/voo-cancelado-cancelamento-de-voo-indenizacao-voo-cancelado/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/seja-compensado-por-seu-problema-em-72h",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/seja-compensado-por-seu-problema-em-72h/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dicas-para-sua-viagem",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dicas-para-sua-viagem/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/checklist-viagem",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/checklist-viagem/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/golpes-financeiros",
+      "destination": "/fraudes_bancarias_golpe_maquininha",
+      "permanent": true
+    },
+    {
+      "source": "/golpes-financeiros/",
+      "destination": "/fraudes_bancarias_golpe_maquininha",
+      "permanent": true
+    },
+    {
+      "source": "/fraudes-financeiras",
+      "destination": "/fraudes_bancarias_golpe_maquininha",
+      "permanent": true
+    },
+    {
+      "source": "/fraudes-financeiras/",
+      "destination": "/fraudes_bancarias_golpe_maquininha",
+      "permanent": true
+    }
+  ]
+}
