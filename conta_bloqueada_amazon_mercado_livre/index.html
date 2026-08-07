@@ -859,7 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // Cole aqui a URL do Webhook Customizado gerada pela Letalk
   // (Painel Letalk > Integrações > Webhook Customizado > associar campos > copiar URL)
-  var LETALK_WEBHOOK_URL = 'https://webhook.letalk.com.br/126cf70f-029d-4786-8cfd-26691aa46e8a';
+  var LETALK_WEBHOOK_URL = 'COLE_AQUI_A_URL_DO_WEBHOOK_LETALK';
 
   // Lógica de envio de lead, compartilhada pelo formulário do hero e pelo modal do WhatsApp.
   // "canal" identifica, no payload, qual formulário da página gerou o lead.
@@ -873,15 +873,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var emailVal = opts.emailInput.value.trim();
       var telVal = opts.telInput.value.replace(/\D/g,'');
 
-      var nomeOk = nomeVal.split(' ').filter(Boolean).length >= 2;
       var emailOk = isValidEmail(emailVal);
       var telOk = telVal.length >= 10;
 
-      setInvalid(opts.fieldNomeId, !nomeOk);
       setInvalid(opts.fieldEmailId, !emailOk);
       setInvalid(opts.fieldTelId, !telOk);
 
-      if(!nomeOk || !emailOk || !telOk){
+      if(!emailOk || !telOk){
         return;
       }
 
