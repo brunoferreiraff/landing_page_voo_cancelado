@@ -20,7 +20,44 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1339223671651989');
-fbq('track', 'PageView');
+
+// API de Conversões da Meta: os eventos do navegador e do servidor compartilham
+// o mesmo event_id para que a Meta faça a deduplicação.
+window.metaEventId = function(prefix){
+  return prefix + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+};
+window.sendMetaCapi = function(eventName, eventId, extra){
+  try {
+    var getCookie = function(name){
+      var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+      return m ? decodeURIComponent(m[1]) : '';
+    };
+    var fbc = getCookie('_fbc');
+    var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if(!fbc && fbclid){ fbc = 'fb.1.' + Date.now() + '.' + fbclid; }
+    var body = {
+      event_name: eventName,
+      event_id: eventId,
+      event_source_url: window.location.href,
+      fbp: getCookie('_fbp'),
+      fbc: fbc
+    };
+    for(var k in (extra || {})){ body[k] = extra[k]; }
+    fetch('/api/meta-capi', {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).catch(function(err){ console.warn('Meta CAPI:', err); });
+  } catch(err){ console.warn('Meta CAPI:', err); }
+};
+
+var pageViewEventId = window.metaEventId('pv');
+fbq('track', 'PageView', {}, {eventID: pageViewEventId});
+// Envia o PageView do servidor após o load, quando o cookie _fbp já foi criado pelo Pixel
+window.addEventListener('load', function(){
+  window.sendMetaCapi('PageView', pageViewEventId);
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1339223671651989&ev=PageView&noscript=1"
@@ -896,6 +933,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       })
         .then(function(response){
           if(!response.ok){ throw new Error('Falha no envio: ' + response.status); }
+
+          // Lead no Pixel + API de Conversões (mesmo event_id para deduplicação)
+          var leadEventId = window.metaEventId('lead');
+          fbq('track', 'Lead', {content_name: opts.canal}, {eventID: leadEventId});
+          window.sendMetaCapi('Lead', leadEventId, {
+            email: emailVal,
+            phone: '55' + telVal,
+            name: nomeVal,
+            custom_data: { content_name: opts.canal }
+          });
+
           showSuccess();
         })
         .catch(function(err){
