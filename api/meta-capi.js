@@ -2,7 +2,7 @@
 // Usada apenas pela LP /cias_cancel_delays.
 //
 // Variáveis de ambiente (Vercel > Settings > Environment Variables):
-//   META_PIXEL_ID         ID do Pixel/dataset (1339223671651989)
+//   META_PIXEL_ID         ID do Pixel/dataset (291214425669777)
 //   META_CAPI_TOKEN       Token de acesso gerado no Gerenciador de Eventos
 //   META_TEST_EVENT_CODE  (opcional) código da aba "Testar eventos"
 
