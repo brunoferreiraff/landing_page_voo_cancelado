@@ -17,7 +17,9 @@ function sha256(value) {
 }
 
 function normalize(value) {
-  return String(value || '').trim().toLowerCase();
+  return String(value || '')
+    .trim()
+    .toLowerCase();
 }
 
 module.exports = async function handler(req, res) {
@@ -35,7 +37,11 @@ module.exports = async function handler(req, res) {
 
   let body = req.body || {};
   if (typeof body === 'string') {
-    try { body = JSON.parse(body); } catch (e) { body = {}; }
+    try {
+      body = JSON.parse(body);
+    } catch (e) {
+      body = {};
+    }
   }
 
   const eventName = body.event_name;
@@ -47,7 +53,9 @@ module.exports = async function handler(req, res) {
   }
 
   let sourcePath = '';
-  try { sourcePath = new URL(sourceUrl).pathname; } catch (e) {}
+  try {
+    sourcePath = new URL(sourceUrl).pathname;
+  } catch (e) {}
   if (sourcePath.indexOf(ALLOWED_PATH) !== 0) {
     return res.status(400).json({ error: 'Invalid source' });
   }
@@ -57,7 +65,7 @@ module.exports = async function handler(req, res) {
     client_ip_address: forwardedFor.split(',')[0].trim() || undefined,
     client_user_agent: req.headers['user-agent'] || undefined,
     fbp: body.fbp || undefined,
-    fbc: body.fbc || undefined
+    fbc: body.fbc || undefined,
   };
 
   const email = normalize(body.email);
@@ -69,7 +77,8 @@ module.exports = async function handler(req, res) {
   const nameParts = normalize(body.name).split(/\s+/).filter(Boolean);
   if (nameParts.length) {
     userData.fn = [sha256(nameParts[0])];
-    if (nameParts.length > 1) userData.ln = [sha256(nameParts[nameParts.length - 1])];
+    if (nameParts.length > 1)
+      userData.ln = [sha256(nameParts[nameParts.length - 1])];
   }
 
   const event = {
@@ -78,7 +87,7 @@ module.exports = async function handler(req, res) {
     event_id: String(eventId),
     action_source: 'website',
     event_source_url: sourceUrl,
-    user_data: userData
+    user_data: userData,
   };
   if (body.custom_data && typeof body.custom_data === 'object') {
     event.custom_data = body.custom_data;
@@ -90,20 +99,29 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const url = 'https://graph.facebook.com/' + GRAPH_API_VERSION + '/' + pixelId +
-      '/events?access_token=' + encodeURIComponent(token);
+    const url =
+      'https://graph.facebook.com/' +
+      GRAPH_API_VERSION +
+      '/' +
+      pixelId +
+      '/events?access_token=' +
+      encodeURIComponent(token);
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
-    const result = await response.json().catch(function () { return {}; });
+    const result = await response.json().catch(function () {
+      return {};
+    });
 
     if (!response.ok) {
       console.error('Erro da API de Conversões:', JSON.stringify(result));
       return res.status(502).json({ error: 'Meta API error' });
     }
-    return res.status(200).json({ ok: true, events_received: result.events_received });
+    return res
+      .status(200)
+      .json({ ok: true, events_received: result.events_received });
   } catch (err) {
     console.error('Falha ao chamar a API de Conversões:', err);
     return res.status(502).json({ error: 'Meta API unreachable' });
