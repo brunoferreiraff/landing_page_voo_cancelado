@@ -1291,36 +1291,6 @@
         flex: none;
       }
 
-      /* Linha compacta com os critérios atendidos (fica abaixo do selo de avaliações) */
-      .criteria-strip {
-        list-style: none;
-        margin: 16px 0 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 16px;
-      }
-      .criteria-strip li {
-        display: flex;
-        align-items: flex-start;
-        gap: 6px;
-        font-size: 12px;
-        line-height: 1.3;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.9);
-      }
-      @media (min-width: 480px) {
-        .criteria-strip li {
-          font-size: 12.5px;
-        }
-      }
-      .criteria-strip li::before {
-        content: '✓';
-        color: var(--brand-yellow);
-        font-weight: 800;
-        flex: none;
-      }
-
       /* H1 dinâmico com bullets */
       .hero-lead {
         display: block;
@@ -1690,14 +1660,6 @@
               Indenizei</span
             >
           </div>
-          <ul class="criteria-strip">
-            <li>Cancelamento que você descobriu no aeroporto</li>
-            <li>Atraso de mais de 4 horas</li>
-            <li>Conexão perdida por atraso da companhia</li>
-            <li>Mala extraviada</li>
-            <li>Overbooking com mais de 4h de atraso</li>
-            <li>Alteração avisada em até 3 dias antes</li>
-          </ul>
         </div>
 
         <div>
@@ -1714,46 +1676,7 @@
             <div id="form-default" style="margin-top: 6px">
               <h3>Descubra se você tem direito a uma indenização</h3>
 
-              <div id="form-step-qual">
-                <p class="q-progress">Passo 1 de 2 · sem pedir seus dados</p>
-                <p class="q-question">
-                  Qual foi o seu problema com a companhia aérea?
-                </p>
-                <div class="q-options" id="qual-casos"></div>
-
-                <div class="q-followup" id="qual-followup" hidden>
-                  <p class="q-question" id="qual-followup-q"></p>
-                  <div class="q-options" id="qual-followup-options"></div>
-                </div>
-
-                <div class="q-warning" id="qual-warning" hidden>
-                  <strong>Atenção: chance de êxito menor</strong>
-                  <span id="qual-warning-text"></span>
-                </div>
-
-                <button
-                  type="button"
-                  class="btn btn-primary btn-block"
-                  id="qual-continue"
-                  style="margin-top: 16px"
-                  disabled
-                >
-                  Continuar →
-                </button>
-              </div>
-
-              <form id="lead-form" novalidate hidden>
-                <p class="q-progress">Passo 2 de 2 · falta só o contato</p>
-                <div class="q-chip">
-                  <div class="q-chip__label" id="qual-chip-label"></div>
-                  <button
-                    type="button"
-                    class="q-chip__edit"
-                    id="qual-chip-edit"
-                  >
-                    alterar
-                  </button>
-                </div>
+              <form id="lead-form" novalidate>
                 <div class="field" id="field-nome">
                   <label for="nome">Nome</label>
                   <input
@@ -2291,46 +2214,11 @@
           </div>
           <h3 id="wa-modal-title">Fale agora com o time jurídico</h3>
           <p class="form-card__sub">
-            Responda 2 perguntas sobre o que aconteceu e nosso time te chama no
-            WhatsApp para analisar o seu caso, sem custo.
+            Preencha seus dados e nosso time te chama no WhatsApp para
+            analisar o seu caso, sem custo.
           </p>
 
-          <div id="wa-form-step-qual">
-            <p class="q-progress">Passo 1 de 2 · sem pedir seus dados</p>
-            <p class="q-question">
-              Qual foi o seu problema com a companhia aérea?
-            </p>
-            <div class="q-options" id="wa-qual-casos"></div>
-
-            <div class="q-followup" id="wa-qual-followup" hidden>
-              <p class="q-question" id="wa-qual-followup-q"></p>
-              <div class="q-options" id="wa-qual-followup-options"></div>
-            </div>
-
-            <div class="q-warning" id="wa-qual-warning" hidden>
-              <strong>Atenção: chance de êxito menor</strong>
-              <span id="wa-qual-warning-text"></span>
-            </div>
-
-            <button
-              type="button"
-              class="btn btn-primary btn-block"
-              id="wa-qual-continue"
-              style="margin-top: 16px"
-              disabled
-            >
-              Continuar →
-            </button>
-          </div>
-
-          <form id="wa-lead-form" novalidate hidden>
-            <p class="q-progress">Passo 2 de 2 · falta só o contato</p>
-            <div class="q-chip">
-              <div class="q-chip__label" id="wa-qual-chip-label"></div>
-              <button type="button" class="q-chip__edit" id="wa-qual-chip-edit">
-                alterar
-              </button>
-            </div>
+          <form id="wa-lead-form" novalidate>
             <div class="field" id="wa-field-nome">
               <label for="wa-nome">Nome</label>
               <input
@@ -2454,310 +2342,6 @@
         var LETALK_WEBHOOK_URL =
           'https://webhook.letalk.com.br/daff568c-b964-4cea-b5e5-a44e0292b087';
 
-        // ===================================================================
-        // Casos que o escritório atende, com a condição que precisa ser
-        // verdadeira em cada um. Fonte da verdade única: o formulário do hero
-        // e o do modal de WhatsApp leem desta mesma lista.
-        //   ok:true  -> resposta qualifica o caso
-        //   motivo   -> texto exibido quando a resposta reduz a chance de êxito
-        // ===================================================================
-        var CASOS = [
-          {
-            id: 'voo_cancelado',
-            label: 'Meu voo foi cancelado',
-            hint: 'Sem aviso prévio — descobri no aeroporto',
-            servico: 'indenizacao-voo-cancelado',
-            pergunta:
-              'Você só descobriu o cancelamento quando chegou ao aeroporto?',
-            opcoes: [
-              {
-                id: 'descobriu_no_aeroporto',
-                label: 'Sim, só descobri no aeroporto',
-                ok: true,
-              },
-              {
-                id: 'avisado_antes',
-                label: 'Não, fui avisado antes de sair de casa',
-                ok: false,
-                motivo:
-                  'Quando a companhia avisa o cancelamento com antecedência e oferece reacomodação, a chance de indenização cai bastante.',
-              },
-            ],
-          },
-          {
-            id: 'voo_atrasado',
-            label: 'Meu voo atrasou',
-            hint: 'Mais de 4 horas para chegar ao destino',
-            servico: 'indenizacao-voo-atrasado',
-            pergunta: 'O atraso para você chegar ao destino passou de 4 horas?',
-            opcoes: [
-              { id: 'atraso_mais_4h', label: 'Sim, mais de 4 horas', ok: true },
-              {
-                id: 'atraso_ate_4h',
-                label: 'Não, menos de 4 horas',
-                ok: false,
-                motivo:
-                  'Atuamos em atrasos acima de 4 horas. Abaixo disso, a Justiça costuma entender que não houve dano indenizável.',
-              },
-            ],
-          },
-          {
-            id: 'perda_conexao',
-            label: 'Perdi minha conexão',
-            hint: 'Por atraso ou cancelamento da própria companhia',
-            servico: 'indenizacao-perda-de-conexao',
-            pergunta:
-              'A conexão foi perdida por atraso ou cancelamento da própria companhia?',
-            opcoes: [
-              {
-                id: 'culpa_da_companhia',
-                label: 'Sim, cheguei atrasado por causa da companhia',
-                ok: true,
-              },
-              {
-                id: 'outro_motivo',
-                label: 'Não, foi por outro motivo',
-                ok: false,
-                motivo:
-                  'A indenização depende de a perda da conexão ter sido causada pela companhia aérea.',
-              },
-            ],
-          },
-          {
-            id: 'mala_extraviada',
-            label: 'Minha mala foi extraviada',
-            hint: 'Perdida, danificada ou devolvida com atraso',
-            servico: 'indenizacao-mala-extraviada',
-            pergunta: null,
-            opcoes: [],
-          },
-          {
-            id: 'overbooking',
-            label: 'Sofri overbooking',
-            hint: 'Voo vendido além da capacidade, com +4h de atraso',
-            servico: 'indenizacao-overbooking',
-            pergunta: 'Você chegou ao destino com mais de 4 horas de atraso?',
-            opcoes: [
-              { id: 'atraso_mais_4h', label: 'Sim, mais de 4 horas', ok: true },
-              {
-                id: 'atraso_ate_4h',
-                label: 'Não, menos de 4 horas',
-                ok: false,
-                motivo:
-                  'Em overbooking, atuamos quando o atraso para você chegar ao destino passa de 4 horas.',
-              },
-            ],
-          },
-          {
-            id: 'voo_alterado',
-            label: 'Meu voo foi alterado ou remarcado',
-            hint: 'Avisado em até 3 dias antes — ou só no aeroporto',
-            servico: 'indenizacao-voo-alterado',
-            pergunta: 'Quando você soube da alteração?',
-            opcoes: [
-              {
-                id: 'soube_no_aeroporto',
-                label: 'Só quando cheguei no aeroporto',
-                ok: true,
-              },
-              {
-                id: 'ate_3_dias_antes',
-                label: 'Até 3 dias antes do voo',
-                ok: true,
-              },
-              {
-                id: 'mais_de_3_dias',
-                label: 'Com mais de 3 dias de antecedência',
-                ok: false,
-                motivo:
-                  'Alterações comunicadas com mais de 3 dias de antecedência raramente geram indenização.',
-              },
-            ],
-          },
-        ];
-
-        // Monta uma opção de rádio estilizada como card tocável.
-        function makeOption(groupName, value, label, hint, onPick) {
-          var wrap = document.createElement('label');
-          wrap.className = 'q-option';
-
-          var input = document.createElement('input');
-          input.type = 'radio';
-          input.name = groupName;
-          input.value = value;
-
-          var mark = document.createElement('span');
-          mark.className = 'q-option__mark';
-
-          var text = document.createElement('span');
-          text.className = 'q-option__text';
-          text.appendChild(document.createTextNode(label));
-          if (hint) {
-            var hintEl = document.createElement('span');
-            hintEl.className = 'q-option__hint';
-            hintEl.appendChild(document.createTextNode(hint));
-            text.appendChild(hintEl);
-          }
-
-          wrap.appendChild(input);
-          wrap.appendChild(mark);
-          wrap.appendChild(text);
-
-          input.addEventListener('change', function () {
-            var irmaos = wrap.parentNode.querySelectorAll('.q-option');
-            for (var i = 0; i < irmaos.length; i++) {
-              irmaos[i].classList.remove('is-selected');
-            }
-            wrap.classList.add('is-selected');
-            onPick();
-          });
-          // Realce de foco no card, já que o input real está visualmente escondido
-          input.addEventListener('focus', function () {
-            wrap.classList.add('has-focus');
-          });
-          input.addEventListener('blur', function () {
-            wrap.classList.remove('has-focus');
-          });
-
-          return wrap;
-        }
-
-        // Passo 1: escolha do caso + pergunta-chave daquele caso.
-        // Retorna getQualificacao(), usada pelo wireLeadForm para montar o payload.
-        function wireQualifier(opts) {
-          var p = opts.prefix;
-          function byId(sufixo) {
-            return document.getElementById(p + sufixo);
-          }
-
-          var stepQual = byId('form-step-qual');
-          var casosBox = byId('qual-casos');
-          var followup = byId('qual-followup');
-          var followupQ = byId('qual-followup-q');
-          var followupBox = byId('qual-followup-options');
-          var warning = byId('qual-warning');
-          var warningText = byId('qual-warning-text');
-          var continueBtn = byId('qual-continue');
-          var chipLabel = byId('qual-chip-label');
-          var chipEdit = byId('qual-chip-edit');
-
-          var state = { caso: null, resposta: null };
-
-          function pronto() {
-            if (!state.caso) {
-              return false;
-            }
-            if (state.caso.pergunta && !state.resposta) {
-              return false;
-            }
-            return true;
-          }
-
-          function qualificado() {
-            if (!state.caso) {
-              return false;
-            }
-            if (!state.caso.pergunta) {
-              return true;
-            }
-            return !!(state.resposta && state.resposta.ok);
-          }
-
-          function atualizarUi() {
-            continueBtn.disabled = !pronto();
-            if (pronto() && !qualificado() && state.resposta) {
-              warningText.textContent = state.resposta.motivo || '';
-              warning.hidden = false;
-            } else {
-              warning.hidden = true;
-            }
-          }
-
-          function renderFollowup() {
-            followupBox.innerHTML = '';
-            if (state.caso && state.caso.pergunta) {
-              followupQ.textContent = state.caso.pergunta;
-              state.caso.opcoes.forEach(function (op) {
-                followupBox.appendChild(
-                  makeOption(
-                    p + 'detalhe_caso',
-                    op.id,
-                    op.label,
-                    '',
-                    function () {
-                      state.resposta = op;
-                      atualizarUi();
-                    }
-                  )
-                );
-              });
-              followup.hidden = false;
-            } else {
-              followup.hidden = true;
-            }
-            atualizarUi();
-          }
-
-          CASOS.forEach(function (caso) {
-            casosBox.appendChild(
-              makeOption(
-                p + 'tipo_caso',
-                caso.id,
-                caso.label,
-                caso.hint,
-                function () {
-                  state.caso = caso;
-                  state.resposta = null;
-                  renderFollowup();
-                }
-              )
-            );
-          });
-
-          continueBtn.addEventListener('click', function () {
-            if (!pronto()) {
-              return;
-            }
-            chipLabel.textContent = 'Seu caso: ' + state.caso.label;
-            if (state.resposta) {
-              var detalhe = document.createElement('span');
-              detalhe.textContent = state.resposta.label;
-              chipLabel.appendChild(detalhe);
-            }
-            stepQual.hidden = true;
-            opts.form.hidden = false;
-            // Em desktop leva o foco para o primeiro campo; no celular evitamos
-            // abrir o teclado automaticamente.
-            if (
-              opts.nomeInput &&
-              !(
-                window.matchMedia &&
-                window.matchMedia('(pointer: coarse)').matches
-              )
-            ) {
-              opts.nomeInput.focus();
-            }
-          });
-
-          chipEdit.addEventListener('click', function () {
-            opts.form.hidden = true;
-            stepQual.hidden = false;
-          });
-
-          return function getQualificacao() {
-            return {
-              tipo_caso: state.caso ? state.caso.id : '',
-              tipo_caso_label: state.caso ? state.caso.label : '',
-              detalhe_caso: state.resposta ? state.resposta.id : '',
-              detalhe_caso_label: state.resposta ? state.resposta.label : '',
-              servico: state.caso
-                ? state.caso.servico
-                : 'indenizacao-voo-cancelado-atrasado',
-              qualificado: qualificado(),
-            };
-          };
-        }
-
         // Lógica de envio de lead, compartilhada pelo formulário do hero e pelo modal do WhatsApp.
         // "canal" identifica, no payload, qual formulário da página gerou o lead.
         function wireLeadForm(opts) {
@@ -2785,10 +2369,6 @@
             // Payload no formato esperado pela Letalk (Webhook Customizado):
             // "contacts.phone" é obrigatório; "contacts.name" e "contacts.email" ficam
             // disponíveis como variáveis para personalizar a mensagem no WhatsApp
-            // Qualificação respondida no passo 1 — "servico" muda conforme o caso
-            // (perda de conexão, por exemplo, é um serviço próprio).
-            var qual = opts.getQualificacao ? opts.getQualificacao() : {};
-
             var payload = {
               contacts: {
                 name: nomeVal,
@@ -2796,12 +2376,7 @@
                 phone: '55' + telVal,
               },
               origem: 'lp-voo-cancelado-atrasado',
-              servico: qual.servico || 'indenizacao-voo-cancelado-atrasado',
-              tipo_caso: qual.tipo_caso || '',
-              tipo_caso_label: qual.tipo_caso_label || '',
-              detalhe_caso: qual.detalhe_caso || '',
-              detalhe_caso_label: qual.detalhe_caso_label || '',
-              qualificado: !!qual.qualificado,
+              servico: 'indenizacao-voo-cancelado-atrasado',
               canal: opts.canal,
               utm: utmParams,
               pagina_url: window.location.href,
@@ -2850,10 +2425,7 @@
                 var leadEventId = window.metaEventId('lead');
                 var metaCustomData = {
                   content_name: opts.canal,
-                  content_category: qual.tipo_caso || '',
-                  tipo_caso: qual.tipo_caso || '',
-                  servico: qual.servico || '',
-                  qualificado: qual.qualificado ? 'sim' : 'nao',
+                  servico: payload.servico,
                 };
                 fbq('track', 'Lead', metaCustomData, { eventID: leadEventId });
                 window.sendMetaCapi('Lead', leadEventId, {
@@ -2878,7 +2450,7 @@
 
         // Os dois formulários da página usam a mesma convenção de ids: o do hero sem
         // prefixo e o do modal de WhatsApp com "wa-". Por isso um único setup serve
-        // para ambos (qualificação do passo 1 + envio do passo 2).
+        // para ambos.
         function setupForm(cfg) {
           var p = cfg.prefix;
           var opts = {
@@ -2894,7 +2466,6 @@
             successContainerId: p + 'form-success',
             canal: cfg.canal,
           };
-          opts.getQualificacao = wireQualifier(opts);
           wireLeadForm(opts);
         }
 
