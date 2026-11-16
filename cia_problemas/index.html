@@ -27,8 +27,8 @@ src="https://www.facebook.com/tr?id=291214425669777&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indenização por Voo Cancelado ou Atrasado | Direito do Passageiro Aéreo — Indenizei</title>
-<meta name="description" content="Voo cancelado, atrasado ou remarcado pela companhia aérea? Nosso time jurídico analisa seu caso grátis e cuida de todo o processo. Você só paga se receber.">
+<title>Indenização: Voo Cancelado sem Aviso, Atraso de +4h ou Mala Extraviada — Indenizei</title>
+<meta name="description" content="Voo cancelado que você descobriu no aeroporto, atraso de mais de 4 horas, conexão perdida por culpa da companhia, overbooking ou mala extraviada? Análise jurídica gratuita. Você só paga se receber.">
 <link rel="icon" type="image/png" href="/cia_problemas/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -191,6 +191,15 @@ src="https://www.facebook.com/tr?id=291214425669777&ev=PageView&noscript=1"
   @media(min-width:480px){.hero__trust{margin-top:22px;font-size:13.5px;}}
   .stars{color:var(--brand-yellow);font-size:15px;letter-spacing:1px;}
   .criteria-note{margin-top:14px;font-size:13.5px;color:rgba(255,255,255,.88);}
+  .criteria-note--strong{font-size:16px;font-weight:700;color:var(--white);}
+  .hero-lead{display:block;}
+  .hero-bullets{list-style:none;margin:10px 0 12px;padding:0;display:flex;flex-direction:column;gap:6px;font-size:clamp(16px,3.4vw,22px);font-weight:700;}
+  .hero-bullets li{display:flex;align-items:flex-start;gap:8px;}
+  .hero-bullets li::before{content:'✓';color:var(--brand-yellow);font-weight:800;flex:none;}
+  .hero-cta{display:block;}
+  .hero__link{font-size:13.5px;font-weight:700;color:var(--brand-yellow);text-decoration:underline;text-underline-offset:3px;}
+  .icon--check{background:var(--green-light);color:var(--green);}
+  .card__cond{display:block;font-weight:500;font-size:13px;color:var(--slate-light);margin-top:6px;line-height:1.4;}
 
   /* Boarding pass mock / form card */
   .pass{
@@ -431,7 +440,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="sticky-bar">
     <div class="sticky-bar__inner">
       <div class="brand"><img src="/cia_problemas/assets/logo.png" alt="Indenizei" class="brand-logo"></div>
-      <div class="sticky-bar__offer">Voo atrasou ou foi cancelado? Descubra grátis se você tem direito a indenização.</div>
+      <div class="sticky-bar__offer">Cancelamento descoberto no aeroporto, atraso de +4h, conexão perdida, overbooking ou mala extraviada? Análise gratuita.</div>
       <a href="#form-contato" class="btn btn-primary btn-small">Verificar se tenho direito</a>
     </div>
   </header>
@@ -442,17 +451,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="container hero__grid">
       <div>
-        <span class="eyebrow tag-red hero__eyebrow">DIREITO DO PASSAGEIRO AÉREO · ANÁLISE GRATUITA</span>
-        <h1>Seu voo foi cancelado ou atrasou mais de 4 horas? Isso pode virar uma <span class="hl">indenização.</span></h1>
-        <p class="hero__sub">Te ajudamos a conseguir uma indenização pelo seu problema com a companhia aérea. Sofreu voo atrasado, voo cancelado, mala extraviada ou overbooking? Você só paga se ganhar.</p>
+        <span class="eyebrow tag-red hero__eyebrow">DIREITO DO PASSAGEIRO AÉREO · ATUAMOS EM 6 CASOS ESPECÍFICOS</span>
+        <h1>
+          <span class="hero-lead">Se seu voo foi</span>
+          <ul class="hero-bullets">
+            <li>Cancelado sem aviso prévio</li>
+            <li>Atrasou mais de 4 horas</li>
+            <li>Atrasou e você perdeu a conexão</li>
+          </ul>
+          <span class="hero-cta">Você pode ter direito a uma <span class="hl">indenização!</span></span>
+        </h1>
+        <p class="hero__sub">A Indenizei te ajuda a conseguir uma indenização pelo seu problema com a companhia aérea. Só pague se ganhar.</p>
+        <p class="criteria-note criteria-note--strong">⏱ Avaliamos seu caso em até 1 hora.</p>
         <div class="hero__actions">
-          <a href="#casos" class="btn btn-ghost">Ver casos reais →</a>
+          <a href="#casos" class="hero__link">Ver casos reais que já geraram indenização →</a>
         </div>
         <div class="hero__trust">
           <span class="stars">★★★★★</span>
           <span>4.8/5 · +15.000 passageiros já verificaram seus direitos com a Indenizei</span>
         </div>
-        <p class="criteria-note">⏱ Avaliamos seu caso em até 1 hora.</p>
       </div>
 
       <div>
@@ -464,11 +481,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span style="font-size:12.5px;color:var(--slate-light);">Indenização de até</span>
             <span class="badge badge--green">R$ 18.000,00</span>
           </div>
-          <p class="pass__value-note">*teto legal — o valor real depende do seu caso</p>
-
           <div id="form-default" style="margin-top:6px;">
-            <h3>Descubra se você tem direito</h3>
-            <p class="form-card__sub">Leva menos de 2 minutos. Um advogado do nosso time analisa seu caso e te chama no WhatsApp.</p>
+            <h3>Descubra se você tem direito a uma indenização</h3>
             <form id="lead-form" novalidate>
               <div class="field" id="field-nome">
                 <label for="nome">Nome</label>
@@ -485,7 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel">
                 <span class="field__error">Informe um telefone válido com DDD.</span>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Verificar se tenho direito — grátis</button>
+              <button type="submit" class="btn btn-primary btn-block">Quero minha análise gratuita</button>
               <p class="form-note">Sem compromisso. Você só paga se ganhar — se não conseguirmos a indenização, você não paga nada.</p>
             </form>
           </div>
@@ -502,23 +516,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="container"><div class="stub-divider on-white"></div></div>
 
-  <!-- PROBLEM IDENTIFICATION -->
-  <section class="problems">
+  <!-- CASOS ATENDIDOS -->
+  <section class="problems" id="casos-que-atendemos">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow tag-red">Direito dos passageiros · Atraso de voo</span>
-        <h2>Isso já aconteceu com você?</h2>
-        <p>Se a companhia aérea cancelou seu voo, mudou o horário sem aviso ou você ficou horas parado no aeroporto, a lei está do seu lado.</p>
+        <span class="eyebrow tag-blue">Nosso recorte de atuação</span>
+        <h2>Atendemos estes 6 casos — e é neles que a chance é alta</h2>
+        <p>Cada caso tem uma condição específica. Se o seu se encaixa em uma destas situações, vale fazer a análise gratuita.</p>
       </div>
-      <div class="grid grid--5">
-        <div class="card reveal"><div class="icon icon--x">✕</div><p>A companhia aérea cancelou meu voo sem aviso prévio</p></div>
-        <div class="card reveal"><div class="icon icon--x">✕</div><p>Meu voo atrasou mais de 4 horas e não fui informado</p></div>
-        <div class="card reveal"><div class="icon icon--x">✕</div><p>A cia aérea alterou meu voo e mudou meus planos</p></div>
-        <div class="card reveal"><div class="icon icon--x">✕</div><p>Perdi minha conexão por causa do atraso da companhia</p></div>
-        <div class="card reveal"><div class="icon icon--x">✕</div><p>Minha mala foi extraviada ou chegou danificada</p></div>
+      <div class="grid grid--3">
+        <div class="card reveal"><div class="icon icon--check">✓</div><p>Seu voo foi cancelado sem aviso prévio?<span class="card__cond">Você só descobriu o cancelamento quando chegou ao aeroporto</span></p></div>
+        <div class="card reveal"><div class="icon icon--check">✓</div><p>Seu voo atrasou mais de 4 horas?<span class="card__cond">O atraso para você chegar ao destino passou de 4 horas</span></p></div>
+        <div class="card reveal"><div class="icon icon--check">✓</div><p>Você perdeu a conexão por atraso da companhia?<span class="card__cond">Você chegou atrasado do primeiro trecho e perdeu o voo seguinte</span></p></div>
+        <div class="card reveal"><div class="icon icon--check">✓</div><p>Sua mala foi extraviada?<span class="card__cond">Bagagem perdida, danificada ou devolvida com atraso</span></p></div>
+        <div class="card reveal"><div class="icon icon--check">✓</div><p>Você foi impedido de embarcar por overbooking com mais de 4 horas de atraso?<span class="card__cond">Você foi impedido de embarcar em voo vendido além da capacidade</span></p></div>
+        <div class="card reveal"><div class="icon icon--check">✓</div><p>Seu voo foi alterado com aviso de até 3 dias?<span class="card__cond">Ou quando você só soube da alteração no próprio aeroporto</span></p></div>
       </div>
     </div>
   </section>
+
+  <!-- ESCOPO: ATENDEMOS / NÃO ATENDEMOS -->
+  <section class="scenarios" id="escopo">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-red">Transparência antes de você perder tempo</span>
+        <h2>O que entra e o que não entra na nossa análise</h2>
+        <p>Preferimos recusar um caso a criar falsa expectativa. Veja de que lado está o seu problema.</p>
+      </div>
+      <div class="grid grid--2 compare">
+        <div class="scenario-panel scenario-panel--good reveal">
+          <div class="scenario-panel__icon">✓</div>
+          <h3 style="color:var(--green);">Casos que atendemos</h3>
+          <ul>
+            <li>Cancelamento que você descobriu só no aeroporto</li>
+            <li>Atraso de mais de 4 horas para chegar ao destino</li>
+            <li>Conexão perdida por atraso ou cancelamento da companhia</li>
+            <li>Mala extraviada, danificada ou devolvida com atraso</li>
+            <li>Overbooking com mais de 4 horas de atraso</li>
+            <li>Alteração de voo avisada em até 3 dias antes — ou descoberta no aeroporto</li>
+          </ul>
+        </div>
+        <div class="scenario-panel scenario-panel--bad reveal">
+          <div class="scenario-panel__icon">✕</div>
+          <h3 style="color:var(--red);">Casos que não atendemos</h3>
+          <ul>
+            <li>Atraso de menos de 4 horas</li>
+            <li>Cancelamento comunicado pela companhia com antecedência</li>
+            <li>Alteração de horário avisada com mais de 3 dias</li>
+            <li>Conexão perdida por motivo não causado pela companhia</li>
+            <li>Remarcação ou desistência pedida por você</li>
+            <li>Pedido apenas de reembolso da passagem, sem indenização</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="stub-divider on-white"></div></div>
 
   <!-- HOW IT WORKS -->
   <section class="how">
@@ -673,16 +727,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="closing">
     <div class="container" style="max-width:720px;text-align:center;">
       <div class="reveal">
-        <span class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff;">Indenização por atraso de voo</span>
-        <h2 style="margin-top:14px;">Isso aconteceu com você? Então pode ter direito a uma indenização.</h2>
-        <p style="margin:14px auto 0;max-width:480px;">Preencha seus dados, e nosso time jurídico entra em contato pelo WhatsApp para confirmar, sem custo, se o seu voo cancelado, atrasado ou remarcado gera direito à indenização.</p>
+        <span class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#fff;">Atuamos em 6 casos específicos</span>
+        <h2 style="margin-top:14px;">Isso aconteceu com você? Então vale fazer a análise.</h2>
+        <p style="margin:14px auto 0;max-width:480px;">Preencha seus dados. Se o seu caso estiver no nosso recorte, nosso time jurídico entra em contato pelo WhatsApp para analisar — sem custo.</p>
         <ul class="closing__points" style="align-items:center;margin:22px auto 0;display:inline-flex;flex-direction:column;">
+          <li>Cancelamento descoberto no aeroporto, atraso ou overbooking de +4h, conexão perdida, mala extraviada ou alteração avisada em até 3 dias</li>
           <li>Análise 100% gratuita e sem compromisso</li>
           <li>Avaliamos seu caso em até 1 hora</li>
           <li>Você só paga se ganhar — se não conseguirmos a indenização, você não paga nada</li>
         </ul>
         <div style="margin-top:28px;">
-          <a href="#form-contato" class="btn btn-primary">Verificar se tenho direito →</a>
+          <a href="#form-contato" class="btn btn-primary">Ver se o meu caso se encaixa →</a>
         </div>
       </div>
     </div>
@@ -698,10 +753,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="footer__cols">
           <div>
-            <a href="#">Voo cancelado</a>
-            <a href="#">Voo atrasado</a>
-            <a href="#">Overbooking</a>
-            <a href="#">Mala extraviada</a>
+            <a href="#casos-que-atendemos">Voo cancelado sem aviso</a>
+            <a href="#casos-que-atendemos">Voo atrasado +4h</a>
+            <a href="#casos-que-atendemos">Perda de conexão</a>
+            <a href="#casos-que-atendemos">Overbooking +4h</a>
+            <a href="#casos-que-atendemos">Mala extraviada</a>
           </div>
           <div>
             <a href="#">Quem somos</a>
