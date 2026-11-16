@@ -352,13 +352,17 @@
       }
       .sticky-bar__inner {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
         gap: 10px 16px;
         padding: 10px 16px;
         max-width: 1120px;
         margin: 0 auto;
+      }
+      .sticky-bar__inner .brand,
+      .sticky-bar__inner .btn {
+        flex-shrink: 0;
       }
       @media (min-width: 480px) {
         .sticky-bar__inner {
@@ -397,6 +401,12 @@
         font-weight: 500;
         color: #dce6ff;
         display: none;
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: center;
       }
       @media (min-width: 760px) {
         .sticky-bar__offer {
@@ -1329,6 +1339,11 @@
         color: rgba(255, 255, 255, 0.82);
         max-width: 520px;
       }
+      .criteria-note--strong {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--white);
+      }
       .hero__link {
         font-size: 13.5px;
         font-weight: 700;
@@ -1634,9 +1649,8 @@
             <span class="hl">indenização.</span>
           </h1>
           <p class="hero__sub">
-            Somos um time jurídico especializado em direito do passageiro aéreo
-            e atuamos <strong>apenas</strong> nos casos abaixo — é isso que nos
-            permite manter uma alta taxa de êxito. Veja se o seu se encaixa:
+            A Indenizei te ajuda a conseguir uma indenização pelo seu problema
+            com a companhia aérea. Só pague se ganhar.
           </p>
           <ul class="criteria-list">
             <li>Cancelamento que você descobriu no aeroporto</li>
@@ -1646,11 +1660,9 @@
             <li>Overbooking com mais de 4h de atraso</li>
             <li>Alteração avisada em até 3 dias antes</li>
           </ul>
-          <p class="criteria-note">
-            Não é o seu caso? Então provavelmente não vamos conseguir ajudar — e
-            preferimos dizer isso agora, antes de você perder tempo.
+          <p class="criteria-note criteria-note--strong">
+            ⏱ Avaliamos seu caso em até 1 hora.
           </p>
-          <p class="criteria-note">⏱ Avaliamos seu caso em até 1 hora.</p>
           <div class="hero__actions">
             <a href="#casos" class="hero__link"
               >Ver casos reais que já geraram indenização →</a
@@ -1676,16 +1688,8 @@
               >
               <span class="badge badge--green">R$ 18.000,00</span>
             </div>
-            <p class="pass__value-note">
-              *teto legal — o valor real depende do seu caso
-            </p>
-
             <div id="form-default" style="margin-top: 6px">
-              <h3>Descubra se o seu caso se encaixa</h3>
-              <p class="form-card__sub">
-                Responda 2 perguntas rápidas. Se o seu caso estiver no nosso
-                recorte, um advogado do time analisa e te chama no WhatsApp.
-              </p>
+              <h3>Descubra se você tem direito a uma indenização</h3>
 
               <div id="form-step-qual">
                 <p class="q-progress">Passo 1 de 2 · sem pedir seus dados</p>
