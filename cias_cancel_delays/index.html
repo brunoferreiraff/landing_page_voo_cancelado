@@ -1291,47 +1291,63 @@
         flex: none;
       }
 
-      /* Lista de critérios no herói — o recorte visível de bate-olho */
-      .criteria-list {
+      /* Linha compacta com os critérios atendidos (fica abaixo do selo de avaliações) */
+      .criteria-strip {
         list-style: none;
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 7px;
+        margin: 16px 0 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 16px;
       }
-      @media (min-width: 380px) {
-        .criteria-list {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      @media (min-width: 900px) {
-        .criteria-list {
-          max-width: 540px;
-        }
-      }
-      .criteria-list li {
+      .criteria-strip li {
         display: flex;
         align-items: flex-start;
-        gap: 7px;
-        font-size: 12.5px;
+        gap: 6px;
+        font-size: 12px;
         line-height: 1.3;
         font-weight: 600;
-        color: var(--white);
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 8px;
-        padding: 8px 10px;
+        color: rgba(255, 255, 255, 0.9);
       }
       @media (min-width: 480px) {
-        .criteria-list li {
-          font-size: 13px;
+        .criteria-strip li {
+          font-size: 12.5px;
         }
       }
-      .criteria-list li::before {
+      .criteria-strip li::before {
         content: '✓';
         color: var(--brand-yellow);
         font-weight: 800;
         flex: none;
+      }
+
+      /* H1 dinâmico com bullets */
+      .hero-lead {
+        display: block;
+      }
+      .hero-bullets {
+        list-style: none;
+        margin: 10px 0 12px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: clamp(16px, 3.4vw, 22px);
+        font-weight: 700;
+      }
+      .hero-bullets li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .hero-bullets li::before {
+        content: '✓';
+        color: var(--brand-yellow);
+        font-weight: 800;
+        flex: none;
+      }
+      .hero-cta {
+        display: block;
       }
       .criteria-note {
         margin-top: 12px;
@@ -1644,22 +1660,21 @@
             >DIREITO DO PASSAGEIRO AÉREO · ATUAMOS EM 6 CASOS ESPECÍFICOS</span
           >
           <h1>
-            Seu voo foi cancelado sem aviso, atrasou mais de 4 horas ou você
-            perdeu a conexão? Isso pode virar uma
-            <span class="hl">indenização.</span>
+            <span class="hero-lead">Se seu voo foi</span>
+            <ul class="hero-bullets">
+              <li>Cancelado sem aviso prévio</li>
+              <li>Atrasou mais de 4 horas</li>
+              <li>Atrasou e você perdeu a conexão</li>
+            </ul>
+            <span class="hero-cta"
+              >Você pode ter direito a uma
+              <span class="hl">indenização!</span></span
+            >
           </h1>
           <p class="hero__sub">
             A Indenizei te ajuda a conseguir uma indenização pelo seu problema
             com a companhia aérea. Só pague se ganhar.
           </p>
-          <ul class="criteria-list">
-            <li>Cancelamento que você descobriu no aeroporto</li>
-            <li>Atraso de mais de 4 horas</li>
-            <li>Conexão perdida por atraso da companhia</li>
-            <li>Mala extraviada</li>
-            <li>Overbooking com mais de 4h de atraso</li>
-            <li>Alteração avisada em até 3 dias antes</li>
-          </ul>
           <p class="criteria-note criteria-note--strong">
             ⏱ Avaliamos seu caso em até 1 hora.
           </p>
@@ -1675,6 +1690,14 @@
               Indenizei</span
             >
           </div>
+          <ul class="criteria-strip">
+            <li>Cancelamento que você descobriu no aeroporto</li>
+            <li>Atraso de mais de 4 horas</li>
+            <li>Conexão perdida por atraso da companhia</li>
+            <li>Mala extraviada</li>
+            <li>Overbooking com mais de 4h de atraso</li>
+            <li>Alteração avisada em até 3 dias antes</li>
+          </ul>
         </div>
 
         <div>
