@@ -142,9 +142,10 @@ src="https://www.facebook.com/tr?id=291214425669777&ev=PageView&noscript=1"
     border-bottom:1px solid rgba(255,255,255,.12);
   }
   .sticky-bar__inner{
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;
+    display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:10px 16px;
     padding:10px 16px;max-width:1120px;margin:0 auto;
   }
+  .sticky-bar__inner .brand,.sticky-bar__inner .btn{flex-shrink:0;}
   @media(min-width:480px){.sticky-bar__inner{padding:12px 24px;}}
   .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--white);}
   .brand-logo{height:20px;width:auto;display:block;}
@@ -153,7 +154,7 @@ src="https://www.facebook.com/tr?id=291214425669777&ev=PageView&noscript=1"
   @media(min-width:480px){footer .brand-logo{height:30px;}}
   .sticky-bar__offer{
     font-size:13.5px;font-weight:500;color:#DCE6FF;
-    display:none;
+    display:none;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;
   }
   @media(min-width:760px){.sticky-bar__offer{display:block;}}
 
@@ -183,6 +184,12 @@ src="https://www.facebook.com/tr?id=291214425669777&ev=PageView&noscript=1"
   }
   @media(min-width:760px){.hero__content{padding:72px 0 80px;}}
   .hero__form{width:100%;max-width:520px;margin:0 auto;}
+  @media(min-width:900px){
+    .hero{padding:64px 0 80px;}
+    .hero__grid{grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    .hero__content{min-height:0;max-width:none;margin:0;padding:0;}
+    .hero__form{max-width:none;margin:0;}
+  }
   .hero__eyebrow{margin-bottom:16px;}
   .hero h1{font-size:clamp(30px,8.4vw,46px);font-weight:800;color:var(--white);max-width:600px;}
   .hero h1 .hl{color:var(--brand-yellow);}
