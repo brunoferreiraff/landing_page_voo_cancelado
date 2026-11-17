@@ -1308,7 +1308,7 @@
       }
       .hero-bullets li {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         gap: 8px;
       }
       .hero-bullets li::before {
@@ -1320,7 +1320,9 @@
       .hero-cta {
         display: block;
         margin-top: 6px;
-        font-size: clamp(14px, 4.4vw, 21px);
+        font-size: clamp(13px, 4vw, 21px);
+        line-height: 1.25;
+        text-wrap: balance;
       }
       .criteria-note {
         margin-top: 12px;
