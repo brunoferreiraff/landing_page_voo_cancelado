@@ -484,6 +484,26 @@
         max-width: 520px;
         margin: 0 auto;
       }
+      @media (min-width: 900px) {
+        .hero {
+          padding: 64px 0 80px;
+        }
+        .hero__grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 48px;
+          align-items: center;
+        }
+        .hero__content {
+          min-height: 0;
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+        .hero__form {
+          max-width: none;
+          margin: 0;
+        }
+      }
       .hero__eyebrow {
         margin-bottom: 16px;
       }
